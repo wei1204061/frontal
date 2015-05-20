@@ -22,7 +22,9 @@
         <td>
             水平分隔线（horizontal rule）可以在视觉上将文档分隔成各个部分。
         </td>
-        <td><hr></td>
+        <td>
+            <hr>
+        </td>
     </tr>
     <tr>
         <td>
@@ -37,13 +39,42 @@
             表单用于向服务器传输数据。
         </td>
         <td>
-            <form>
+            <form action="data.xml" method="get" target="_blank">
                 <ol>
-                    <li>密码框：<input type="password"></li>
-                    <li>颜色：<input type="color"></li>
                     <li>文本框：<input type="text" placeholder="姓名"></li>
+                    <li>密码框：<input type="password" placeholder="密码"></li>
+                    <li>
+                        单选框：
+                        <input type="radio" name="gender" value="男" checked>男
+                        <input type="radio" name="gender" value="女">女
+                    </li>
+                    <li>
+                        复选框：
+                        <input type="checkbox" name="favorite" value="歌">歌
+                        <input type="checkbox" name="favorite" value="球">球
+                        <input type="checkbox" name="favorite" value="舞">舞
+                    </li>
+
+                    <li>文件选择：<input type="file"></li>
+
+                    <li>日期选择：<input type="date"></li>
+                    <li>月份选择：<input type="month"></li>
+                    <li>时间选择：<input type="time"></li>
+                    <li>日期时间：<input type="datetime-local"></li>
+                    <li>周数选择：<input type="week"></li>
+
+                    <li>接受数字：<input type="number"></li>
+                    <li>接受URL：<input type="url"></li>
+                    <li>接受Email：<input type="email"></li>
+                    <li>选择区域：<input type="range"></li>
+
+                    <li>颜&nbsp;色：<input type="color"></li>
                     <li>文本域：<textarea></textarea></li>
-                    <!--todo:追加其他表单内容-->
+
+                    <li>普通按钮：<input type="button" value="普通按钮"></li>
+                    <li>重置按钮：<input type="reset" value="重置"></li>
+                    <li>提交按钮：<input type="submit" value="提交"></li>
+                    <li>提交按钮图片：<input type="image"></li>
                 </ol>
             </form>
         </td>
@@ -54,36 +85,65 @@
         <td>
             由于 h 元素拥有确切的语义，因此请您慎重地选择恰当的标签层级来构建文档的结构。因此，请不要利用标题标签来改变同一行中的字体大小。相反，我们应当使用层叠样式表定义来达到漂亮的显示效果。
         </td>
-        <td><!--todo:举例--></td>
+        <td>
+            <h1>Hello!</h1>
+            <h2>Hello!</h2>
+            <h3>Hello!</h3>
+            <h4>Hello!</h4>
+            <h5>Hello!</h5>
+            <h6>Hello!</h6>
+        </td>
     </tr>
     <tr>
-        <td>ol</td>
+        <td>ol+li</td>
         <td>标签定义有序列表。</td>
         <td>请使用 CSS 来定义列表的类型。</td>
-        <td><!--todo:举例--></td>
+        <td>
+            <ol>
+                <li>好好学习</li>
+                <li>天天向上</li>
+            </ol>
+        </td>
     </tr>
     <tr>
-        <td>ul</td>
+        <td>ul+li</td>
         <td>标签定义无序列表。</td>
         <td>
             在 HTML 4.01 中，ul 元素的 "compact" 和 "type" 属性是不被赞成使用的。
             在 XHTML 1.0 Strict DTD 中，ul 元素的 "compact" 和 "type" 属性是不被支持的。
             提示和注释：
         </td>
-        <td><!--todo:举例--></td>
+        <td>
+            <ul>
+                <li>好好学习</li>
+                <li>天天向上</li>
+            </ul>
+        </td>
     </tr>
     <tr>
         <td>p</td>
         <td>段落标记</td>
         <td>在 HTML 4.01 中，所有 p 元素的呈现属性均不被赞成使用。
-            在 XHTML 1.0 Strict DTD 中，所有 p 元素的呈现属性均不被支持。</td>
-        <td><!--todo:举例--></td>
+            在 XHTML 1.0 Strict DTD 中，所有 p 元素的呈现属性均不被支持。
+        </td>
+        <td>
+            <p>
+                Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git的读音为/gɪt/。
+            </p>
+
+            <p>
+                Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。
+                Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+            </p>
+        </td>
     </tr>
     <tr>
         <td>a</td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>超链接或锚</td>
+        <td>既可以是超链接，也可以是锚。这取决于是否描述了 href 属性。</td>
+        <td>
+            <a href="data.xml" target="_blank">打开</a>
+        </td>
     </tr>
     <tr>
         <td>img</td>
@@ -110,19 +170,13 @@
         <td></td>
     </tr>
     <tr>
-        <td>ul+li</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>ol+li</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
         <td>table</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>select+option</td>
         <td></td>
         <td></td>
         <td></td>
