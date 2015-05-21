@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HTML5 Selectors API</title>
+    <script type="text/javascript">
+        var touch = function(){
+            /**
+             * HTML5 向WEB API新引进了Selectors API，用于更方便的从DOM获得元素。
+             * 可以用更精确的方式来指定希望获取的元素，而不必在用标准DOM的方式循环遍历。
+             * querySelector(selectors) , querySelectorAll(selectors)
+             * 两个方法使用差不多的语法，都是接收一个字符串参数，这个参数需要是合法的CSS选择语法。
+             * selectors可以包含多个CSS选择器，用逗号隔开。
+             * /
+
+            /**
+             * 1、querySelector(selectors)
+             * 该方法返回满足条件的单个元素。或者null
+             * 按照深度优先和先序遍历的原则使用参数提供的CSS选择器在DOM进行查找
+             * 返回第一个满足条件的元素。
+             * @type {Element}      单个元素或者null
+             */
+            var first_salary_cell = document.querySelector("td.salary,td.employee") ;
+            first_salary_cell.style.fontSize = "20pt" ;
+
+            /**
+             * 2、querySelectorAll(selectors)
+             * 该方法返回所有满足条件的元素，结果是个nodeList集合。或者nodeList={}
+             * 查找规则与前面所述一样。
+             * 但需要注意的是返回的nodeList集合中的元素是非实时（no-live）的.
+             * document.getElementByName(),document.getElementById()等，返回的是实时(live)的
+             * @type {NodeList}     nodeList
+             */
+            var cells = document.querySelectorAll("table > tbody > tr > td[data-manager='true']");
+            for (var i = 0; i < cells.length; i++)
+                cells[i].style.color = "#FF0000";
+
+        }
+    </script>
+</head>
+<body>
+
+<table id="companyFoo">
+    <tbody>
+    <tr>
+        <td class="employee" data-manager="false">Jack</td>
+        <td class="salary">$70,000</td>
+    </tr>
+    <tr>
+        <td class="employee" data-manager="true">Jill</td>
+        <td class="salary">$80,000</td>
+    </tr>
+    </tbody>
+</table>
+
+<table id="companyBar">
+    <tbody>
+    <tr>
+        <td class="employee" data-manager="false">Pete</td>
+        <td class="salary">$55,000</td>
+    </tr>
+    <tr>
+        <td class="employee" data-manager="true">Pam</td>
+        <td class="salary">$90,000</td>
+    </tr>
+    </tbody>
+</table>
+
+<input type="button" value="click" onclick="touch()">
+
+</body>
+</html>

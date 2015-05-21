@@ -1,0 +1,37 @@
+{
+  "persons": [
+    {
+      "id": 10001,
+      "name": "first",
+      "birthday": "2001-10-01",
+      "address": {
+        "streetAddress": "1 Microsoft way",
+        "city": "SuZhou",
+        "state": "JiangSu",
+        "postalCode": 98051
+      },
+      "phoneNumbers": "425-712-7777"
+    },
+    {
+      "id": 1002,
+      "name": "second",
+      "birthday": "2011-08-11",
+      "address": {
+        "streetAddress": "2 Microsoft way",
+        "city": "ShangHai",
+        "state": "ZhongGuo",
+        "postalCode": 98052
+      },
+      "phoneNumbers": [
+        "425-777-7777",
+        "206-777-7777"
+      ]
+    }
+  ],
+  "relation": [
+    "father and son",
+    "husband and wife",
+    "brothers",
+    "sisters"
+  ]
+}

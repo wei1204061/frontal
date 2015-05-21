@@ -11,3 +11,4 @@ http://www.tecenet.com/zixun/show.php?itemid=7447
 4、jQuery + jQueryUI + jQueryMobile
 5、D3.js  --> Data Driven Document
 6、Node.js
+7、SVG

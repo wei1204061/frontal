@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>window.JSON native JSON</title>
+    <script type="text/javascript" src="../../library/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <script type="text/javascript">
+        $.ajax({
+            url:"../data.json",
+            type:"POST",
+            data:"json",
+            success: function (data) {
+                /**
+                 * HTML5已原生支持json的解析和对象构造。
+                 * window.JSON.parse(jsonStr)将json格式字符串转换为json对象。
+                 * window.JSON.stringify(jsonObj)将json对象转换为json格式字符串。
+                 */
+
+                /**
+                 * 1、var jsonObj = window.JSON.parse(data);
+                 * 可能JQuery的ajax已经封装了json对象的构造，所以不能再调用HTML5的window.JSON.parse()
+                 * 当然1和2完全可以用jQuery里封装的方法，但是毕竟不是原生的。呵呵
+                 * /
+                console.log(data.persons);  //打印到控制台
+
+                //粗略的显示在页面上
+                $("body").append("<span class='red_emphasis'>解析显示JsonObject</span><br>");
+                $.each(data.persons,function(index,domEle){
+                    $("body").append("<div>"+index+" = "+domEle.name+"</div>");
+                });
+
+                /**
+                 * 2、var jsonStr = window.JSON.stringify(data);
+                 * 将json对象转换成json格式的字符串
+                 */
+                var jsonStr = window.JSON.stringify(data);
+
+                console.log(jsonStr);   //打印到控制台
+
+                //jsonStr显示在页面上
+                $("body").append("<hr><span class='red_emphasis'>将JsonObject转换成JsonStr</span>");
+                $("body").append("<div>"+jsonStr+"</div>");
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
