@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CANVAS</title>
+    <script type="text/javascript">
+        var func = function(){
+            var support = document.querySelector("#support");
+
+            /**
+             * 判断浏览器是否支持Canvas
+             */
+            try{
+                document.createElement("canvas").getContext("2d");
+                support.innerText = "Enjoy HTML5 Canvas!" ;
+            }catch (e){
+                console.log(e);
+                support.innerText = "HTML5 Canvas not supported in your browser!" ;
+            }
+
+        }
+
+       window.onload = function () {
+           var canvas = document.querySelector("#diagonal") ;
+           var context = canvas.getContext("2d");
+           context.fillRect(0,0,200,100);
+       };
+
+    </script>
+</head>
+<body>
+
+<canvas>
+    <!--使用替代canvas的文本或图片-->
+    Update your browser to enjoy canvas!
+</canvas>
+
+<div id="support"></div>
+
+<input type="button" value="click" onclick="func();">
+<br><hr><br>
+
+<!--使用canvas标签，主要是在JavaScript代码中操作，给画布添加特效-->
+<canvas id="diagonal" style="width:200px;height:200px;border:1px solid red;"></canvas>
+
+</body>
+</html>
