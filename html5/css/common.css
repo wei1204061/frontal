@@ -3,3 +3,9 @@
     color: red;
     font-weight: bold;
 }
+
+.canvas{
+    width:600px;
+    height:600px;
+    box-shadow:0 0 10px rgba(0,0,0,.2)
+}

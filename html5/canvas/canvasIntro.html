@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>CANVAS</title>
+    <link rel="stylesheet" href="../css/common.css">
     <script type="text/javascript">
         var func = function(){
             var support = document.querySelector("#support");
@@ -21,9 +22,26 @@
         }
 
        window.onload = function () {
+           /*获取Canvas元素*/
            var canvas = document.querySelector("#diagonal") ;
+           /*取得上下文*/
            var context = canvas.getContext("2d");
-           context.fillRect(0,0,200,100);
+           /*声明开始绘画*/
+           context.beginPath();
+           /*定义起点，可以理解为将画笔移到一个位置*/
+           context.moveTo(50,100);
+           /*定义一个终点*/
+           context.lineTo(200,100);
+           /*结束路径*/
+           context.closePath();
+           /*定义线宽*/
+           context.lineWidth=20;
+           /*线条颜色*/
+           context.strokeStyle='blue';
+           /*定义线帽*/
+           context.lineCap='round';
+           /*进行绘制*/
+           context.stroke();
        };
 
     </script>
@@ -42,6 +60,18 @@
 
 <!--使用canvas标签，主要是在JavaScript代码中操作，给画布添加特效-->
 <canvas id="diagonal" style="width:200px;height:200px;border:1px solid red;"></canvas>
+<br><hr><br>
+
+<div><span class="red_emphasis">说明*:</span>
+    <br>HTML5 Canvas的基本图形都是以路径为基础的。
+    <br>通常使用Context对象的moveTo()、lineTo()、rect()、arc()等方法先在画布中描出图形的路径点
+    <br>然后使用fill()或者stroke()方法依照路径点来填充图形或者绘制线条。
+    <br><br>通常，在开始描绘路径之前需要调用Context对象的beginPath()方法，
+    其作用是清除之前的路径并提醒Context开始绘制一条新的路径，
+    <br>否则当调用stroke()方法的时候会绘制之前所有的路径，影响绘制效果，
+    同时也因为重复多次操作而影响网页性能。
+    <br>另外，调用Context对象的closePath()方法可以显式地关闭当前路径，不过不会清除路径。
+</div>
 
 </body>
 </html>
