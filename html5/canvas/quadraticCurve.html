@@ -5,14 +5,118 @@
     <title>二次曲线</title>
     <!--引用外部样式表-->
     <link rel="stylesheet" href="../css/common.css">
+    <!--内部样式信息-->
+    <style type="text/css">
+        section{
+            width:1000px;
+            height:800px;
+            margin: 0 auto;
+        }
+        section form{
+            margin: 0 auto;
+        }
+        section form span{
+            color: green;
+            font-size: 10pt;
+        }
+    </style>
+
+    <!--外部脚本文件-->
+    <script type="text/javascript" src="../../library/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="quadraticcurve.js"></script>
+    <!--内部脚本-->
+    <script type="text/javascript">
+        window.onload = function(){
+            /**
+             * 初始化range范围为canvas的宽和高。并绘制二次曲线
+             */
+            var canvas = document.querySelector("#canvas");
+            $("#point0_x").attr({min:0,max:canvas.width});
+            $("#point0_y").attr({min:0,max:canvas.height});
+            $("#point1_x").attr({min:0,max:canvas.width});
+            $("#point1_y").attr({min:0,max:canvas.height});
+
+            $("#control_x").attr({min:0,max:canvas.width});
+            $("#control_y").attr({min:0,max:canvas.height});
+
+
+            //初始化二次曲线，各坐标点的值
+            $("#point0_x").val(71);
+            $("#point0_y").val(52);
+
+            $("#point1_x").val(188);
+            $("#point1_y").val(107);
+
+            $("#control_x").val(38);
+            $("#control_y").val(121);
+
+            //拿到左边点，开始初始化绘图
+            var point0 = {x:$("#point0_x").val(),y:$("#point0_y").val()} ;
+            var point1 = {x:$("#point1_x").val(),y:$("#point1_y").val()} ;
+            var control = {x:$("#control_x").val(),y:$("#control_y").val()} ;
+
+            $("#point0_span").text("("+point0.x+","+point0.y+")");
+            $("#point1_span").text("("+point1.x+","+point1.y+")");
+            $("#control_span").text("("+control.x+","+control.y+")");
+
+            Quadratic.drawBy3Points(canvas,point0,point1,control);
+        };
+
+        /**
+         * 监听坐标点，坐标改变事件
+         */
+        var change = function(){
+            /**发现jQuery拿到的canvas，竟然拿不到画布的上下文*/
+            var canvas = document.querySelector("#canvas");
+
+            var point0 = {x:$("#point0_x").val(),y:$("#point0_y").val()} ;
+            var point1 = {x:$("#point1_x").val(),y:$("#point1_y").val()} ;
+            var control = {x:$("#control_x").val(),y:$("#control_y").val()} ;
+
+            $("#point0_span").text("("+point0.x+","+point0.y+")");
+            $("#point1_span").text("("+point1.x+","+point1.y+")");
+            $("#control_span").text("("+control.x+","+control.y+")");
+
+            Quadratic.drawBy3Points(canvas,point0,point1,control);
+        }
+    </script>
 
 </head>
 <body>
 
 <canvas>Update your browser to enjoy canvas!</canvas>
-<!--定义canvas标签，JavaScript通过ID操作该标签-->
-<canvas id="canvas" class="canvas"></canvas>
 
+<section>
+    <canvas id="canvas" class="canvas"></canvas>
+    <form>
+        <table>
+            <tr>
+                <th>点</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>坐标值</th>
+            </tr>
+            <tr>
+                <td>P0</td>
+                <td><input type="range" id="point0_x" onchange="change()"></td>
+                <td><input type="range" id="point0_y" onchange="change()"></td>
+                <td><span id="point0_span"></span></td>
+            </tr>
+            <tr>
+                <td>P1</td>
+                <td><input type="range" id="point1_x" onchange="change()"></td>
+                <td><input type="range" id="point1_y" onchange="change()"></td>
+                <td><span id="point1_span"></span></td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td><input type="range" id="control_x" onchange="change()"></td>
+                <td><input type="range" id="control_y" onchange="change()"></td>
+                <td><span id="control_span"></span></td>
+            </tr>
+        </table>
+    </form>
+</section>
 
 </body>
 </html>

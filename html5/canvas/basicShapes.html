@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>基本图形</title>
+    <script type="text/javascript" src="draw.js"></script>
+    <!--内部脚本文件-->
+    <script type="text/javascript">
+        window.onload = function(){
+            /*获取Canvas元素*/
+            var canvas = document.querySelector("#canvas") ;
+            DrawFunc.basicShapes(canvas);
+        } ;
+    </script>
+    <!--引用外部样式表-->
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+<canvas>Update your browser to enjoy canvas!</canvas>
+
+<canvas id="canvas" class="canvas"></canvas>
+
+</body>
+</html>

@@ -465,6 +465,96 @@ var DrawFunc = {
         context.lineTo(p1.x,p1.y);
 
         context.stroke();
+    },
+    /**
+     * 绘制图片
+     * @param  selector     画布canvas
+     */
+    drawImage:function(selector){
+        var canvas = selector ;
+        var context = canvas.getContext("2d");
+        if(null == context){
+            console.log("context is null");
+            return false ;
+        }
+
+        /**
+         * 先清空画布区域
+         */
+        context.clearRect(0,0,canvas.width,canvas.height);
+
+        image = new Image();
+        image.src = "../images/bluesky.jpg" ;
+
+        /**
+         * 图片加载完成后，进行绘图
+         */
+        /**
+         * drawImage(image, x, y)
+         * 不对图像进行缩放，x,y对应绘制时该图像在画布中的起始坐标
+         * drawImage(image, x, y, width, height)
+         * width,height指绘制时的图像的宽度和高度，可以用来对图像进行【缩放】
+         * drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+         * 将画布中已绘制好的图像的全部或者局部区域复制到画布中的另一个位置。。【切割源图像】
+         */
+        image.onload = function(){
+            for(var i = 0 ; i < 10 ; i++){
+                context.drawImage(image,i*20,i*20,60,40,i*40,i*20,60,40);
+            }
+        }
+
+    },
+
+    /**
+     * 画布画面的位移translate、缩放scale、旋转rotate
+     */
+    transform:function(selector){
+        var canvas = selector ;
+        var context = canvas.getContext("2d");
+        if(null == context){
+            console.log("context is null");
+            return false ;
+        }
+
+        context.fillStyle = "#EEEEFF" ;
+        context.fillRect(0,0,400,300) ;
+
+        context.translate(250,0) ;
+
+        context.fillStyle = 'rgba(255,0,0,0.2)' ;
+
+        for(var i = 0 ; i < 50 ; i++){
+            /**
+             * 【位移】
+             * translate的作用就是把画面左上角到处移动,每次移动都是在上次的基础之上
+             * translate(x,y)
+             * x = x轴的偏移值
+             * y = y轴的偏移值
+             */
+            context.translate(25,25) ;
+            /**
+             * 【缩放】
+             * 缩放是基于左上角，原点的
+             * scale(x,y)
+             * x = 水平方向的缩放
+             * y = 垂直方向的缩放
+             * 参数可以是小数,如果小于1就是缩小,大于1则是放大,等于1则什么都不做
+             */
+            context.scale(0.95,0.95) ;
+            /**
+             * 【旋转】
+             * 旋转也是基于原点的
+             * rotate(radian)
+             * radian = 旋转的弧度
+             */
+            context.rotate(Math.PI/10) ;
+            context.fillRect(0,0,100,50);
+        }
+
+    },
+
+    basicShapes:function(selector){
+
     }
 
 
